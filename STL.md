@@ -27,57 +27,57 @@ comparison functions, and function objects.
     <tr>
         <td>bitset</td>
         <td>A set of bits. </td>
-        <td><bitset></td>
+        <td>&lt<bitset>&gt</td>
     </tr>
     <tr>
         <td>deque</td>
         <td>A double-ended queue.</td>
-        <td><deque></td>
+        <td>&lt<deque>&gt</td>
     </tr>
     <tr>
         <td>list</td>
         <td>A linear list.</td>
-        <td><list></td>
+        <td>&lt<list>&gt</td>
     </tr>
     <tr>
         <td>map</td>
         <td>Stores key/value pairs in which each key is associated with only one value.</td>
-        <td><map></td>
+        <td>&lt<map>&gt</td>
     </tr>
     <tr>
         <td>multimap</td>
         <td>Stores key/value pairs in which one key may be associated with two or more values</td>
-        <td><map></td>
+        <td>&lt<map>&gt</td>
     </tr>
     <tr>
         <td>multiset</td>
         <td> A set in which each element is not
 necessarily unique.</td>
-        <td><set></td>
+        <td>&lt<set>&gt</td>
     </tr>
     <tr>
         <td>priority_queue</td>
         <td>A priority queue.</td>
-        <td><queue></td>
+        <td>&lt<queue>&gt</td>
     </tr>
     <tr>
         <td>queue </td>
         <td>A queue. </td>
-        <td><queue></td>
+        <td>&lt<queue>&gt</td>
     </tr>
     <tr>
         <td>set</td>
         <td>A set in which each element is unique.</td>
-        <td><set></td>
+        <td>&lt<set>&gt</td>
     </tr>
     <tr>
         <td>stack</td>
         <td>A stack.</td>
-        <td><stack></td>
+        <td>&lt<stack>&gt</td>
     </tr>
     <tr>
         <td>vector</td>
         <td>A dynamic array.</td>
-        <td><vector></td>
+        <td>&lt<vector>&gt</td>
     </tr>
 </table>
