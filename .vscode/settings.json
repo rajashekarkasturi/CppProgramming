@@ -1,5 +1,14 @@
 {
     "files.associations": {
-        "vector": "cpp"
+        "vector": "cpp",
+        "functional": "cpp",
+        "xstddef": "cpp",
+        "algorithm": "cpp",
+        "map": "cpp",
+        "memory": "cpp",
+        "system_error": "cpp",
+        "type_traits": "cpp",
+        "unordered_map": "cpp",
+        "xstring": "cpp"
     }
 }
