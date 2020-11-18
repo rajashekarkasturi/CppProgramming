@@ -66,21 +66,43 @@ void create() {
 
 
     std::shared_ptr<Mobile> p(new Mobile("GOOGLE"));
-    {
+    {   
+        cout<< "Use Count " << p.use_count() << endl;
         p->instanceRAM(6);
     }
-
     //Output
     //Mobile is instanced: SAMSUNG
     //The RAM of SAMSUNGis 4
     //Mobile is instanced: GOOGLE
+    //Use Count 1
     //The RAM of GOOGLEis 6
     //Mobile Destructor CalledGOOGLE
 
-
 }
 
+void create2() {
+    // An object should be assigned to a smart pointer as soon as it is created. Raw pointer should not be used.
+    Mobile* ptr = new Mobile("Mi"); //Not an efficient way
+
+    //std::shared_ptr<Mobile> p2(ptr);    // p.use_count() == 1
+    //std::shared_ptr<Mobile> p3(ptr);    // p2.use_count() == 1
+    //here two shared pointer accessing only one object of Dog. This may lead to errors
+
+    //The best way to do it is
+    Mobile* iphone = new Mobile("12 Mini");
+    std::shared_ptr<Mobile> iphone12 = std::make_shared<Mobile>("12 Pro Max");  //faster and safer
+
+    //Just like we cast raw pointer we can cast shared_pointer
+    //static_pointer_cast
+    //dynamic_pointer_cast
+    //const_pointer_cast
+}
+
+
 int main( void ) {
+    
     create();
+    create2();
+    
     return 1;
 }
