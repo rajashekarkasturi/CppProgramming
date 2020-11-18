@@ -3,6 +3,10 @@
 #include<string>
 using std::cout;
 using std::endl;
+using std::shared_ptr;
+using std::make_shared;
+using std::weak_ptr;
+using std::unique_ptr;
 
 /*
  //C++ 03:
@@ -32,6 +36,8 @@ class Dog {
 
 class Mobile {
     std::string Mob_name;
+    //std::shared_ptr<Mobile> new_friend; //Has some ownership of the object
+    std::weak_ptr<Mobile> new_friend;
     int RAM;
     public:
         Mobile(std::string name) {
@@ -45,11 +51,24 @@ class Mobile {
         }
 
         ~Mobile() {
-            cout<< " Mobile Destructor Called" << Mob_name << endl;
+            cout<< "Mobile Destructor Called " << Mob_name << endl;
         }
 
         void instanceRAM(int ram = 4) {
             cout<< "The RAM of "<< Mob_name << "is "<< ram << endl;
+        }
+
+        void createFriend(std::shared_ptr<Mobile> f) {
+            new_friend = f;
+        }
+
+        void showFriend() {
+            if(!new_friend.expired())   cout << "My Friend is: " << new_friend.lock()->Mob_name << endl;
+            //weak_ptr is raw pointer 
+            //It make sure that while accessing, the object is not deleted
+        
+            //We can also print, How many are triggering to that pointer
+            cout << "Owned by "<< new_friend.use_count() << " pointer(s). "<<endl;
         }
 
 };
@@ -98,11 +117,107 @@ void create2() {
     //const_pointer_cast
 }
 
+void CustomDeletionOfPointers() {
+    std::shared_ptr<Mobile> samsunga21s = std::make_shared<Mobile>("Samsung A21s"); //Uses default deleter
+    samsunga21s = nullptr;
+    samsunga21s.reset();
+
+    //But when we want to custom delete some objects we need only shared_pointer constructor
+    std::shared_ptr<Mobile> samsung30s = std::shared_ptr<Mobile>(new Mobile("Samsung A30s"),
+        [](Mobile* ptr) {cout << "Custom Deleting. "; delete ptr;}
+        );
+    
+    //Custom Deletion is very much app;icable when there are array of objects
+    std::shared_ptr<Mobile> s20(new Mobile[3]); //here s20 points to only the first object of the array
+    //so when p3 is deleted, pointer only deletes the first object. Mobile[1], Mobile[2] can be memory leaked
+
+    std::shared_ptr<Mobile> s10(new Mobile[3], [](Mobile* p) {delete[] p;}); //In this way all three can be deleted once
+    // p goes out of scope.
+
+}
+
+void CyclicReferenceOfPointers() {
+    shared_ptr<Mobile> Mi(new Mobile("9a"));
+    shared_ptr<Mobile> Mi2(new Mobile("7"));
+    Mi->createFriend(Mi2);
+    Mi2->createFriend(Mi);
+
+    //Output
+    //Mobile is instanced: 9a
+    //Mobile is instanced: 7
+
+    //Even though using of shared_pointer objects are not deleted,
+    //Because we created a cyclic reference. Inorder to rectify we use weak pointers
+
+
+    
+    Mi->showFriend();
+
+    //Output
+    //Mobile is instanced: 9a
+    //Mobile is instanced: 7
+    //My Friend is: 7
+    //Owned by 1 pointer(s).
+    //Mobile Destructor Called 7
+    //Mobile Destructor Called 9a
+}
+
+void UniquePointer() {
+    //Unique Pointers: exclusive ownership, Light weight smart pointer
+    //Unlike shared Pointers, Multiple pointers share the ownership of same object 
+
+    Mobile* nokia = new Mobile("1100");
+
+    nokia->instanceRAM();
+
+    //an old fashion of programming pointers: Explicit Call to delete
+    delete nokia;
+    //If the program terminates before reaching the delete, It may memory leak
+    //So here we use Unique_pointer
+
+    unique_ptr<Mobile> nokia2(new Mobile("Nokia 3.2")); //Automatically destroyed after the scope
+
+    nokia2->instanceRAM(6); 
+
+    //Output
+    //Mobile is instanced: 1100
+    //The RAM of 1100is 4
+    //Mobile Destructor Called 1100
+    //Mobile is instanced: Nokia 3.2
+    //The RAM of Nokia 3.2is 6
+    //Mobile Destructor Called Nokia 3.2
+
+    //Release function here return the raw pointer of the Unique Pointer
+    
+    //Mobile* nokia3 = nokia2.release();
+    //if(!nokia2) {
+        //Release Ownership of the object, Unlike shared_ptr
+        //cout << "Nokia2 is Empty";
+    //}
+    
+    //If we want to trigger another instance to the pointer
+    nokia2.reset(new Mobile("Nokia 6.3"));
+    if(!nokia2) {
+        cout<< " Nokia 2 is empty"<<endl;
+    } else {
+        cout << "Nokia 2 is not empty"<<endl;
+    }
+
+
+    //Output
+    //Mobile is instanced: Nokia 6.3
+    //Mobile Destructor Called Nokia 3.2
+    //Nokia 2 is not empty
+    //Mobile Destructor Called Nokia 6.3
+
+}
 
 int main( void ) {
     
-    create();
-    create2();
-    
+    //create();
+    //create2();
+    //CustomDeletionOfPointers(); 
+    //CyclicReferenceOfPointers();
+    UniquePointer();
     return 1;
 }
