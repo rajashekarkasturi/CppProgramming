@@ -24,3 +24,12 @@ Pros:
 Cons:
 * Difficult to implement
 * Can't run on distributed system
+
+
+*Over Subscription*
+-- is a problem when there are more threads running than the available threads in the CPU
+-- Here too many context switching can degrade the performance
+
+Solution: Cpp gives hardware concurrency
+std::thread::hardware_concurrency
+givees the indication of how many threads can be truly running concurrently for the program.

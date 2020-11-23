@@ -1,3 +1,8 @@
+.vs/
+
+.vs/*
+
+
 .vscode/
 .vscode/settings.json
 
@@ -17,3 +22,4 @@ Cpp11/Features/*.exe
 
 Cpp11/Concurrency/*.exe
 
+Cpp/../*.exe
