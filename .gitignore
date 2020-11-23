@@ -3,3 +3,17 @@
 
 
 Cpp11/*.exe
+
+
+Cpp11/Tuple/*.exe
+
+Cpp11/RandomNumbers/*.exe
+
+Cpp11/Clocks/*.exe
+
+Cpp11/RegularExpressions/*.exe
+
+Cpp11/Features/*.exe
+
+Cpp11/Concurrency/*.exe
+
