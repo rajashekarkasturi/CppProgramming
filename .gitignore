@@ -22,4 +22,7 @@ Cpp11/Features/*.exe
 
 Cpp11/Concurrency/*.exe
 
-Cpp/AdvancedCpp/Const/*.exe
+AdvancedCpp/Const/*.exe
+
+AdvancedCpp/../*.exe
+
