@@ -1,4 +1,5 @@
 #include<iostream>
+#include<vector>
 using std::cout;
 using std::endl;
 
@@ -47,6 +48,19 @@ void changingConst() {
 
 void constWithFunctions() {
 
+    Mobile mob1;
+    cout<< "Old RAM " << mob1.getRAM() <<endl;
+
+    int newRam = 4;
+    mob1.setRAMexplicit(newRam);
+    cout << newRam << endl;
+    cout<< "New RAM " << mob1.getRAM() <<endl;
+
+
+    mob1.printName();
+    const Mobile mob2;
+    mob2.printName();
+
 }
 
 class Mobile {
@@ -83,22 +97,32 @@ class Mobile {
 
 };
 
+class DataAccess {
+    std::vector<int> v;
+    mutable int accessedTimes = 0;  //Variable can be changed in const function
+    int casting_variable = 0;   //another solution of removing constness
+    public :
+        int getItem(int index) const {
+            accessedTimes++;    //The compiler maintaines the concept of bitwise constness (Conflict between logic constness and Bitwise constness)
+            //Can be solved by making the member as mutable
+
+            const_cast<DataAccess*>(this)->casting_variable++;
+
+            return v[index];
+        }
+
+};
+
+void logicAndBitwiseConstness() {
+    DataAccess d1;
+}
+
 int  main() {
     
     //definitionConst();
     //changingConst();
+    //constWithFunctions();
+    logicAndBitwiseConstness();
 
-    Mobile mob1;
-    cout<< "Old RAM " << mob1.getRAM() <<endl;
-
-    int newRam = 4;
-    mob1.setRAMexplicit(newRam);
-    cout << newRam << endl;
-    cout<< "New RAM " << mob1.getRAM() <<endl;
-
-
-    mob1.printName();
-    const Mobile mob2;
-    mob2.printName();
     return 1;    
 }
