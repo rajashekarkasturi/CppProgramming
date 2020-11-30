@@ -27,3 +27,6 @@ AdvancedCpp/Const/*.exe
 AdvancedCpp/CompilerGeneratedFunctions/*.exe
 
 AdvancedCpp/Destructors/*.exe
+
+AdvancedCpp/ResourceManagement/*.exe
+
