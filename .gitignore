@@ -24,5 +24,6 @@ Cpp11/Concurrency/*.exe
 
 AdvancedCpp/Const/*.exe
 
-AdvancedCpp/../*.exe
+AdvancedCpp/CompilerGeneratedFunctions/*.exe
 
+AdvancedCpp/Destructors/*.exe
