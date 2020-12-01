@@ -30,3 +30,6 @@ AdvancedCpp/Destructors/*.exe
 
 AdvancedCpp/ResourceManagement/*.exe
 
+AdvancedCpp/ImplicitTypeConversion/*.exe
+
+AdvancedCpp/InheritanceTypes/*.exe
