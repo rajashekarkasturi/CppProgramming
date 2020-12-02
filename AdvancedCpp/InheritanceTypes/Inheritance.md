@@ -22,3 +22,10 @@ Casting:
 
 * Public inheritance: is-a relation, ex: B_pub is a kind of a A
 * Private inheritance: similar to has-a relation.
+
+
+*Summary:*
+* 1. Precise definition of classes:
+* 2. Don't override non-virtual functions;
+* 3. Don't override default parameter values for virtual functions;
+* 4. Force inheritance of shadowed functions.
