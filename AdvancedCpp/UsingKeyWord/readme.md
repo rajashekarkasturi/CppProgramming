@@ -22,6 +22,8 @@ int main() {
 
 # Koenig Lookup
 
+Extends the name search scope of the function parameter defined.
+
 with namespaces:
 current scope => next enclosed scope => ... => global scope
 

@@ -33,3 +33,5 @@ AdvancedCpp/ResourceManagement/*.exe
 AdvancedCpp/ImplicitTypeConversion/*.exe
 
 AdvancedCpp/InheritanceTypes/*.exe
+
+AdvancedCpp/UsingKeyWord/*.exe
