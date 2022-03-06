@@ -20,3 +20,14 @@ Three cases here(Static outside of a class or struct).
 
 ## Enums
 giving names to a value to make more readable.
+
+## Virtual Functions
+Come into picture via dynamic dispatch, Which compiles into typically implemented **vtables**. Contains a table of mapping of all the virtual functions that are base class and map them to the correct overriden function at runtime.
+### Runtime Costs(Minimal impact unless you are using embedded systems)
+* Additional memory inorder to store that Vtables to dispatch to the correct function.
+* and also includes the member pointer that actually points to the vtable.
+* so every time we call a virutal function these steps come into picture. vptr --> vtable.
+
+## Pure virtual.
+* Interface consists of pure virutal functions or unimplemented methods.
+* Unable to instantiated.
