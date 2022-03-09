@@ -2,7 +2,7 @@
 
 class Entity {
 public:
-	virtual std::string GetName() { return "Entity"; }
+	std::string virtual GetName() { return "Entity"; }
 };
 
 class Player : public Entity {
@@ -24,5 +24,7 @@ int main(void) {
 
 	Player* p = new Player("Rajashekar");
 	print(p);
+
+	std::cout << p->GetName() << std::endl;
 	return 0;
 }

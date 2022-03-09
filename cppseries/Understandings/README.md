@@ -31,3 +31,14 @@ Come into picture via dynamic dispatch, Which compiles into typically implemente
 ## Pure virtual.
 * Interface consists of pure virutal functions or unimplemented methods.
 * Unable to instantiated.
+
+## string literals
+are always stored in Read only memory.
+
+## const
+```	
+    const int* a = new int ; //contents cannot be modified
+	int const* a = new int; //contents cannot be modified.
+	int* const a = new int; //Refernce cannot be modified
+    const int* const a = new int; //Both reference and contents cannot be modified.
+```
