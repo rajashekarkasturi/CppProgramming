@@ -32,8 +32,18 @@ int main() {
 
 	*a = 2;
 	a = (int*)&MAX_AGE;
-	std::cout << *a << std::endl;
+	//std::cout << *a << std::endl;
 
+	//using Mutable in lamda
+
+	int x = 8;
+	//specify the capture, = (by value), & (by reference), using the mutable keyword to specify the value of x so that it can be modified.
+	auto f = [=]() mutable {
+		x++;
+		std::cout << x << std::endl;
+	};
+	f();
+	std::cout << x << std::endl;
 
 	std::cin.get();
 }
