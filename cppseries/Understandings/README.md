@@ -42,3 +42,14 @@ are always stored in Read only memory.
 	int* const a = new int; //Refernce cannot be modified
     const int* const a = new int; //Both reference and contents cannot be modified.
 ```
+
+
+## Lambda Functions
+In Lambada functions, whenever  we pass a value with the captures, we cannot modify the value inside the body directly, Inorder to do so
+we need to use the keyword **mutable**.
+
+```
+int a = 5;
+auto lambda  = [=]() mutable { a = 6 ; std::cout << a << std::endl; };
+```
+
