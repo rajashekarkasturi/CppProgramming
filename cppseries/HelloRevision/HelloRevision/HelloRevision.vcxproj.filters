@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="using_timers.cpp">
+    <ClCompile Include="Arrays_Multidimensional.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
